@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, createContext, useContext, PropsWithChildren, useLayoutEffect } from 'react';
+import { useState, createContext, useContext, PropsWithChildren, useLayoutEffect, useEffect } from 'react';
 
 const initialTheme = () => localStorage.getItem("theme");
 
@@ -15,9 +15,12 @@ export const ThemeContext = createContext({
 export const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
   const [theme, setTheme] = useState('day');
 
-  useLayoutEffect(()=>{
+  useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) setTheme(storedTheme);
+  }, [])
+
+  useLayoutEffect(()=>{
     localStorage.setItem("theme", theme);
     if (theme === 'night') {
       document.body.style.backgroundColor = '#111111';
