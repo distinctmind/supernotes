@@ -26,10 +26,6 @@ const Home = () => {
   const [characterCount, setCharacterCount] = useState(0);
   const [hashtagCount, setHashtagCount] = useState(0);
   
-  useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes))
-  }, [notes]);
-  
   const getNote = () => {
     for (let i=0; i < notes.length; i++) {
       if (notes[i].id === noteId) return notes[i].body;
@@ -39,8 +35,11 @@ const Home = () => {
 
   useEffect(() => {
     if (noteId) setCaptionText(getNote());
-    if (localStorage.notes) setNotes(JSON.parse(localStorage.notes))
   },[]);
+
+  useEffect(() => {
+    if (notes.length !== 0) localStorage.setItem("notes", JSON.stringify(notes))
+  }, [notes]);
 
   const getCreatedAtDate = () => {
     for (let i=0; i < notes.length; i++) {

@@ -2,25 +2,23 @@
 
 import { useState, createContext, useContext, PropsWithChildren, useLayoutEffect, useEffect } from 'react';
 
-const initialTheme = () => localStorage.getItem("theme");
+// const initialTheme = () => localStorage.getItem("theme");
 
 export const ThemeContext = createContext({
-    theme: 'day',
+    theme: '',
     toggleTheme: () => {},
 });
 
 
-
-
 export const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
-  const [theme, setTheme] = useState('day');
+  const [theme, setTheme] = useState('');
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) setTheme(storedTheme);
   }, [])
 
-  useLayoutEffect(()=>{
+  useEffect(()=>{
     localStorage.setItem("theme", theme);
     if (theme === 'night') {
       document.body.style.backgroundColor = '#111111';

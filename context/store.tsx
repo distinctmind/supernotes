@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction, createContext, useContext, useState } from 'react'
+import { Dispatch, SetStateAction, createContext, useContext, useEffect, useLayoutEffect, useState } from 'react'
 
 import { Note } from '@/types';
 
@@ -16,6 +16,11 @@ export const NotesContext = createContext<Store>({
 
 export function NotesProvider({ children }: {children: React.ReactNode}) {
     const [notes, setNotes] = useState<Note[]>([]);
+
+    useLayoutEffect(() => {
+      if (localStorage.notes) setNotes(JSON.parse(localStorage.notes));
+    },[]);
+
     return (
         <NotesContext.Provider
         value={{
