@@ -18,7 +18,7 @@ const Notes = () => {
     <div className='max-w-[500px] m-auto p-8 flex flex-col'>
         {/* <h2 className='self-center'></h2> */}
         {notes?.map((note) => (
-          <div className='flex flex-row'>
+          <div className='flex flex-row' key={note.id}>
             {note.body && <Button className='w-[2px] h-[20px] rounded-xl mx-2' onClick={() => deleteNote(note)}>X </Button>}
             <Link href={{pathname: "/", query: {id: note.id}}} className='cursor-pointer'>
               <p className={theme === 'day' ? 'text-black' : 'text-white'}>{note.body}</p>

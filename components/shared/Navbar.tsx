@@ -26,9 +26,9 @@ const Navbar = () => {
         </button>
         <div className='flex flex-col m-auto text-center gap-3'>
             {noteId ? 
-              <Link href={{href: "/", query: {id: noteId}}}><h2 className={cn(theme === 'day' ? 'text-black' : 'text-white', 'font-bold')} style={{fontSize: 30}}>What's on your mind?</h2></Link> 
+              <Link href={{href: "/", query: {id: noteId}}}><h2 className={cn(theme === 'day' ? 'text-black' : 'text-white', 'font-bold')} style={{fontSize: 30}}>What&quot;s on your mind?</h2></Link> 
               : 
-              <Link href="/"><h2 className={cn(theme === 'day' ? 'text-black' : 'text-white', 'font-bold')} style={{fontSize: 30}}>What's on your mind?</h2></Link> 
+              <Link href="/"><h2 className={cn(theme === 'day' ? 'text-black' : 'text-white', 'font-bold')} style={{fontSize: 30}}>What&quot;s on your mind?</h2></Link> 
             }
             <Link className={cn(theme === 'day' ? 'text-black' : 'text-white', 'font-bold')} href={"/notes/"}>all notes</Link>
         </div>
