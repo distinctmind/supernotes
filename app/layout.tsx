@@ -26,16 +26,16 @@ export default function RootLayout({
 }>) {
   return (
     <ThemeProvider>
-      <html lang="en" className="night">
-        <Suspense>
-          <body className={cn("font-IBMPlex antialiased", IBMPlex.variable)}>
-            <Navbar />
-            <NotesProvider>
-              {children}
-            </NotesProvider>
-          </body>
-        </Suspense>
-      </html>
+        <html lang="en" className="night">
+          <Suspense>
+            <body className={cn("font-IBMPlex antialiased", IBMPlex.variable)}>
+                <Navbar />
+                <NotesProvider>
+                  {children}
+                </NotesProvider>
+            </body>
+          </Suspense>
+        </html>
     </ThemeProvider>
   );
 }

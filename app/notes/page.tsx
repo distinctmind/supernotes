@@ -5,6 +5,7 @@ import { useNotes } from '@/context/store'
 import { useTheme } from '@/context/theme';
 import { Note } from '@/types';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 const Notes = () => {
   const { notes, setNotes } = useNotes();
@@ -13,6 +14,7 @@ const Notes = () => {
   const deleteNote = (noteToDelete: Note) => {
     setNotes(notes.filter((note) => note.id !== noteToDelete.id));
   }
+
   return (
     <div className='max-w-[500px] m-auto p-8 flex flex-col'>
         {/* <h2 className='self-center'></h2> */}

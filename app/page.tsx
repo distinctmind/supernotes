@@ -37,9 +37,9 @@ const Home = () => {
     if (noteId) setCaptionText(getNote());
   },[]);
 
-  useEffect(() => {
-    if (notes.length !== 0) localStorage.setItem("notes", JSON.stringify(notes))
-  }, [notes]);
+  // useEffect(() => {
+  //   if (notes.length !== 0) localStorage.setItem("notes", JSON.stringify(notes))
+  // }, [notes]);
 
   const getCreatedAtDate = () => {
     for (let i=0; i < notes.length; i++) {

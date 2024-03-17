@@ -15,18 +15,27 @@ export const NotesContext = createContext<Store>({
 })
 
 export function NotesProvider({ children }: {children: React.ReactNode}) {
+    const [mounted, setMounted] = useState(false);
     const [notes, setNotes] = useState<Note[]>([]);
 
-    useLayoutEffect(() => {
-      if (localStorage.notes) setNotes(JSON.parse(localStorage.notes));
+    useEffect(() => {
+      setMounted(true);
+      const notes = localStorage.getItem("notes");
+      if (notes) setNotes(JSON.parse(notes));
+
+      return () => setMounted(false);
     },[]);
+
+    useEffect(() => {
+      if (mounted) localStorage.setItem("notes", JSON.stringify(notes))
+    }, [notes]);
 
     return (
         <NotesContext.Provider
-        value={{
-            notes,
-            setNotes,
-        }}
+          value={{
+              notes,
+              setNotes,
+          }}
         >
         {children}
         </NotesContext.Provider>
