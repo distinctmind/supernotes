@@ -3,7 +3,6 @@
 import { Button } from '@/components/ui/button';
 import { useNotes } from '@/context/store'
 import { useTheme } from '@/context/theme';
-import { cn } from '@/lib/utils';
 import { Note } from '@/types';
 import Link from 'next/link';
 

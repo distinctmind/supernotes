@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import { NotesProvider } from "@/context/store";
 import { ThemeProvider } from "@/context/theme";
+import { Suspense } from "react";
 
 const IBMPlex = IBM_Plex_Sans({ 
   subsets: ["latin"],
@@ -26,12 +27,14 @@ export default function RootLayout({
   return (
     <ThemeProvider>
       <html lang="en" className="night">
-        <body className={cn("font-IBMPlex antialiased", IBMPlex.variable)}>
-          <Navbar />
-          <NotesProvider>
-            {children}
-          </NotesProvider>
-        </body>
+        <Suspense>
+          <body className={cn("font-IBMPlex antialiased", IBMPlex.variable)}>
+            <Navbar />
+            <NotesProvider>
+              {children}
+            </NotesProvider>
+          </body>
+        </Suspense>
       </html>
     </ThemeProvider>
   );

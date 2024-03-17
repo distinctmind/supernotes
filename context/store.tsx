@@ -15,7 +15,7 @@ export const NotesContext = createContext<Store>({
 })
 
 export function NotesProvider({ children }: {children: React.ReactNode}) {
-    const [notes, setNotes] = useState<Note[]>(localStorage.notes ? JSON.parse(localStorage.notes) : []);
+    const [notes, setNotes] = useState<Note[]>([]);
     return (
         <NotesContext.Provider
         value={{

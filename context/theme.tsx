@@ -13,9 +13,11 @@ export const ThemeContext = createContext({
 
 
 export const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
-  const [theme, setTheme] = useState(initialTheme() ?? 'day');
+  const [theme, setTheme] = useState('day');
 
   useLayoutEffect(()=>{
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) setTheme(storedTheme);
     localStorage.setItem("theme", theme);
     if (theme === 'night') {
       document.body.style.backgroundColor = '#111111';
