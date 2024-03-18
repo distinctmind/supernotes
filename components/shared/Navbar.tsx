@@ -25,7 +25,7 @@ const Navbar = () => {
           {theme === 'day' ? moonIcon() : sunIcon()}
         </button>
         <div className='flex flex-col m-auto text-center gap-3'>
-          <Link href={"/notes/"}><h2 className={cn( theme === 'day' ? 'text-black' : 'text-white', 'font-bold')} style={{fontSize: 30}}>What&apos;s on your mind?</h2></Link> 
+          <Link href={"/notes/"}><h2 className={cn( theme === 'day' ? 'text-black' : 'text-white', 'font-bold sm:text-[30px]')}>What&apos;s on your mind?</h2></Link> 
         </div>
     </div>
   )
