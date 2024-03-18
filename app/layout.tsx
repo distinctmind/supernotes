@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <ThemeProvider>
-        <html lang="en" className="night">
+        <html lang="en">
           <Suspense>
             <body className={cn("font-IBMPlex antialiased", IBMPlex.variable)}>
                 <Navbar />

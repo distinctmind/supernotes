@@ -5,25 +5,32 @@ import { useState, createContext, useContext, PropsWithChildren, useLayoutEffect
 // const initialTheme = () => localStorage.getItem("theme");
 
 export const ThemeContext = createContext({
-    theme: '',
+    theme: 'day',
     toggleTheme: () => {},
 });
 
 
 export const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
-  const [theme, setTheme] = useState('');
+  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState('day');
 
   useEffect(() => {
+    setMounted(true);
+
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) setTheme(storedTheme);
+
+    return () => setMounted(false);
   }, [])
 
   useEffect(()=>{
-    localStorage.setItem("theme", theme);
-    if (theme === 'night') {
-      document.body.style.backgroundColor = '#111111';
-    } else {
-      document.body.style.backgroundColor = 'white';
+    if (mounted) {
+      localStorage.setItem("theme", theme);
+      if (theme === 'night') {
+        document.body.style.backgroundColor = '#111111';
+      } else {
+        document.body.style.backgroundColor = 'white';
+      }
     }
   }, [theme])
 
