@@ -117,9 +117,9 @@ const Home = () => {
         <span className={theme === 'day' ? 'text-black' : 'text-white'} style={{position: 'absolute', right: 5}}>#{hashtagCount}/30</span>
         </div>
         <div style={{display: 'flex'}}>
-        <div className='flex w-full h-[45px] pt-[15px] justify-evenly'>
-            <Button onClick={saveText}>save note</Button>
-            <Link href="/" onClick={createNewNote}><Button>new note</Button></Link>
+        <div className='flex w-full h-[45px] pt-[15px] justify-evenly gap-x-5'>
+            <Button className='w-full' onClick={saveText}>save note</Button>
+            <Link className='w-full' href="/" onClick={createNewNote}><Button className='w-full'>new note</Button></Link>
         </div>
         </div>
     </div>
